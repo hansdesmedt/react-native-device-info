@@ -6,6 +6,11 @@
 //  Copyright © 2015 Learnium Limited. All rights reserved.
 //
 
+// Thanks to this guard, we won't import this header when we build for the old architecture.
+#ifdef RCT_NEW_ARCH_ENABLED
+#import "RNDeviceInfoSpec.h"
+#endif
+
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #import <mach/mach.h>
@@ -33,8 +38,9 @@ typedef NS_ENUM(NSInteger, DeviceType) {
 #define DeviceTypeValues [NSArray arrayWithObjects: @"Handset", @"Tablet", @"Tv", @"Desktop", @"unknown", nil]
 
 #if !(TARGET_OS_TV)
-@import CoreTelephony;
-@import Darwin.sys.sysctl;
+#import<CoreTelephony/CTCarrier.h>
+#import<CoreTelephony/CTTelephonyNetworkInfo.h>
+#include <sys/sysctl.h>
 #endif
 
 @implementation RNDeviceInfo
@@ -132,7 +138,7 @@ RCT_EXPORT_MODULE();
 }
 
 - (NSDictionary *) getStorageDictionary {
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: nil];
 }
 
@@ -354,7 +360,7 @@ RCT_EXPORT_METHOD(getCarrier:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromis
     if (status != 0) {
         return @"unknown";
     }
-    NSString* buildId = [[NSString alloc] initWithCString:buffer.mutableBytes encoding:NSUTF8StringEncoding];
+    NSString* buildId = [[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding];
     return buildId;
 #endif
 }
@@ -878,5 +884,14 @@ RCT_EXPORT_METHOD(getFirstInstallTime:(RCTPromiseResolveBlock)resolve rejecter:(
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+// Thanks to this guard, we won't compile this code when we build for the old architecture.
+#ifdef RCT_NEW_ARCH_ENABLED
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
+{
+    return std::make_shared<facebook::react::NativeRNDeviceInfoSpecJSI>(params);
+}
+#endif
 
 @end

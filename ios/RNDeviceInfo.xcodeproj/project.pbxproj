@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		663F51B9262200CA0023385E /* EnvironmentUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 663F51B8262200CA0023385E /* EnvironmentUtil.m */; };
-		76E65CA41D4CA143009B7AF1 /* DeviceUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E65CA31D4CA143009B7AF1 /* DeviceUID.m */; };
+		5530B85E28F454BA00C78B4C /* RNDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5530B85B28F454BA00C78B4C /* RNDeviceInfo.mm */; };
+		5530B85F28F454BA00C78B4C /* DeviceUID.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5530B85C28F454BA00C78B4C /* DeviceUID.mm */; };
+		5530B86028F454BA00C78B4C /* EnvironmentUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5530B85D28F454BA00C78B4C /* EnvironmentUtil.mm */; };
+		559373D428F4623300D4B7EF /* DeviceUID.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5530B85C28F454BA00C78B4C /* DeviceUID.mm */; };
+		559373D528F4623800D4B7EF /* RNDeviceInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5530B85B28F454BA00C78B4C /* RNDeviceInfo.mm */; };
+		559373D628F4623C00D4B7EF /* EnvironmentUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5530B85D28F454BA00C78B4C /* EnvironmentUtil.mm */; };
 		BF770A3D1F6A3EEE007E5F09 /* DeviceUID.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76E65CA21D4CA143009B7AF1 /* DeviceUID.h */; };
 		DA5891DC1BA9A9FC002B4DB2 /* RNDeviceInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA5891DB1BA9A9FC002B4DB2 /* RNDeviceInfo.h */; };
-		DA5891DE1BA9A9FC002B4DB2 /* RNDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5891DD1BA9A9FC002B4DB2 /* RNDeviceInfo.m */; };
-		E72EC1491F7ABC0C0001BC90 /* DeviceUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E65CA31D4CA143009B7AF1 /* DeviceUID.m */; };
-		E72EC14A1F7ABC0E0001BC90 /* RNDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5891DD1BA9A9FC002B4DB2 /* RNDeviceInfo.m */; };
 		E72EC14B1F7ABC1A0001BC90 /* DeviceUID.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76E65CA21D4CA143009B7AF1 /* DeviceUID.h */; };
 		E72EC14C1F7ABC1D0001BC90 /* RNDeviceInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA5891DB1BA9A9FC002B4DB2 /* RNDeviceInfo.h */; };
 /* End PBXBuildFile section */
@@ -44,13 +45,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5530B85B28F454BA00C78B4C /* RNDeviceInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RNDeviceInfo.mm; sourceTree = "<group>"; };
+		5530B85C28F454BA00C78B4C /* DeviceUID.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceUID.mm; sourceTree = "<group>"; };
+		5530B85D28F454BA00C78B4C /* EnvironmentUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnvironmentUtil.mm; sourceTree = "<group>"; };
 		663F51B7262200520023385E /* EnvironmentUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnvironmentUtil.h; sourceTree = "<group>"; };
-		663F51B8262200CA0023385E /* EnvironmentUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnvironmentUtil.m; sourceTree = "<group>"; };
 		76E65CA21D4CA143009B7AF1 /* DeviceUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUID.h; sourceTree = "<group>"; };
-		76E65CA31D4CA143009B7AF1 /* DeviceUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUID.m; sourceTree = "<group>"; };
 		DA5891D81BA9A9FC002B4DB2 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNDeviceInfo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5891DB1BA9A9FC002B4DB2 /* RNDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDeviceInfo.h; sourceTree = "<group>"; };
-		DA5891DD1BA9A9FC002B4DB2 /* RNDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDeviceInfo.m; sourceTree = "<group>"; };
 		E72EC1401F7ABB5A0001BC90 /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNDeviceInfo-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,11 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				76E65CA21D4CA143009B7AF1 /* DeviceUID.h */,
-				76E65CA31D4CA143009B7AF1 /* DeviceUID.m */,
+				5530B85C28F454BA00C78B4C /* DeviceUID.mm */,
 				DA5891DB1BA9A9FC002B4DB2 /* RNDeviceInfo.h */,
-				DA5891DD1BA9A9FC002B4DB2 /* RNDeviceInfo.m */,
+				5530B85B28F454BA00C78B4C /* RNDeviceInfo.mm */,
 				663F51B7262200520023385E /* EnvironmentUtil.h */,
-				663F51B8262200CA0023385E /* EnvironmentUtil.m */,
+				5530B85D28F454BA00C78B4C /* EnvironmentUtil.mm */,
 			);
 			path = RNDeviceInfo;
 			sourceTree = "<group>";
@@ -181,9 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76E65CA41D4CA143009B7AF1 /* DeviceUID.m in Sources */,
-				663F51B9262200CA0023385E /* EnvironmentUtil.m in Sources */,
-				DA5891DE1BA9A9FC002B4DB2 /* RNDeviceInfo.m in Sources */,
+				5530B85F28F454BA00C78B4C /* DeviceUID.mm in Sources */,
+				5530B85E28F454BA00C78B4C /* RNDeviceInfo.mm in Sources */,
+				5530B86028F454BA00C78B4C /* EnvironmentUtil.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,8 +192,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E72EC1491F7ABC0C0001BC90 /* DeviceUID.m in Sources */,
-				E72EC14A1F7ABC0E0001BC90 /* RNDeviceInfo.m in Sources */,
+				559373D428F4623300D4B7EF /* DeviceUID.mm in Sources */,
+				559373D528F4623800D4B7EF /* RNDeviceInfo.mm in Sources */,
+				559373D628F4623C00D4B7EF /* EnvironmentUtil.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

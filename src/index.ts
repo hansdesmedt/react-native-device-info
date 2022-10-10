@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Dimensions, NativeEventEmitter, NativeModules, Platform } from 'react-native';
+import { Dimensions, NativeEventEmitter, Platform } from 'react-native';
 import { useOnEvent, useOnMount } from './internal/asyncHookWrappers';
-import devicesWithDynamicIsland from "./internal/devicesWithDynamicIsland";
+import devicesWithDynamicIsland from './internal/devicesWithDynamicIsland';
 import devicesWithNotch from './internal/devicesWithNotch';
 import RNDeviceInfo from './internal/nativeInterface';
 import {
@@ -16,6 +16,7 @@ import type {
   LocationProviderInfo,
   PowerState,
 } from './internal/types';
+import NativeRNDeviceInfo from './NativeRNDeviceInfo';
 
 export const [getUniqueId, getUniqueIdSync] = getSupportedPlatformInfoFunctions({
   memoKey: 'uniqueId',
@@ -170,16 +171,14 @@ export const getBundleId = () =>
     getter: () => RNDeviceInfo.bundleId,
   });
 
-export const [
-  getInstallerPackageName,
-  getInstallerPackageNameSync,
-] = getSupportedPlatformInfoFunctions({
-  memoKey: 'installerPackageName',
-  supportedPlatforms: ['android', 'windows', 'ios'],
-  getter: () => RNDeviceInfo.getInstallerPackageName(),
-  syncGetter: () => RNDeviceInfo.getInstallerPackageNameSync(),
-  defaultValue: 'unknown',
-});
+export const [getInstallerPackageName, getInstallerPackageNameSync] =
+  getSupportedPlatformInfoFunctions({
+    memoKey: 'installerPackageName',
+    supportedPlatforms: ['android', 'windows', 'ios'],
+    getter: () => RNDeviceInfo.getInstallerPackageName(),
+    syncGetter: () => RNDeviceInfo.getInstallerPackageNameSync(),
+    defaultValue: 'unknown',
+  });
 
 export const getApplicationName = () =>
   getSupportedPlatformInfoSync({
@@ -641,15 +640,13 @@ export function isLowBatteryLevel(level: number): boolean {
   return level < 0.2;
 }
 
-export const [
-  getSystemAvailableFeatures,
-  getSystemAvailableFeaturesSync,
-] = getSupportedPlatformInfoFunctions({
-  supportedPlatforms: ['android'],
-  getter: () => RNDeviceInfo.getSystemAvailableFeatures(),
-  syncGetter: () => RNDeviceInfo.getSystemAvailableFeaturesSync(),
-  defaultValue: [] as string[],
-});
+export const [getSystemAvailableFeatures, getSystemAvailableFeaturesSync] =
+  getSupportedPlatformInfoFunctions({
+    supportedPlatforms: ['android'],
+    getter: () => RNDeviceInfo.getSystemAvailableFeatures(),
+    syncGetter: () => RNDeviceInfo.getSystemAvailableFeaturesSync(),
+    defaultValue: [] as string[],
+  });
 
 export const [isLocationEnabled, isLocationEnabledSync] = getSupportedPlatformInfoFunctions({
   supportedPlatforms: ['android', 'ios', 'web'],
@@ -688,15 +685,13 @@ export const isTabletMode = () =>
     defaultValue: false,
   });
 
-export const [
-  getAvailableLocationProviders,
-  getAvailableLocationProvidersSync,
-] = getSupportedPlatformInfoFunctions({
-  supportedPlatforms: ['android', 'ios'],
-  getter: () => RNDeviceInfo.getAvailableLocationProviders(),
-  syncGetter: () => RNDeviceInfo.getAvailableLocationProvidersSync(),
-  defaultValue: {},
-});
+export const [getAvailableLocationProviders, getAvailableLocationProvidersSync] =
+  getSupportedPlatformInfoFunctions({
+    supportedPlatforms: ['android', 'ios'],
+    getter: () => RNDeviceInfo.getAvailableLocationProviders(),
+    syncGetter: () => RNDeviceInfo.getAvailableLocationProvidersSync(),
+    defaultValue: {},
+  });
 
 export const [getBrightness, getBrightnessSync] = getSupportedPlatformInfoFunctions({
   supportedPlatforms: ['ios'],
@@ -712,7 +707,7 @@ export async function getDeviceToken() {
   return 'unknown';
 }
 
-const deviceInfoEmitter = new NativeEventEmitter(NativeModules.RNDeviceInfo);
+const deviceInfoEmitter = new NativeEventEmitter(NativeRNDeviceInfo);
 export function useBatteryLevel(): number | null {
   const [batteryLevel, setBatteryLevel] = useState<number | null>(null);
 

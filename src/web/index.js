@@ -1,6 +1,7 @@
-import { NativeEventEmitter, NativeModules } from 'react-native';
+import { NativeEventEmitter } from 'react-native';
+import NativeRNDeviceInfo from '../NativeRNDeviceInfo';
 
-const deviceInfoEmitter = new NativeEventEmitter(NativeModules.RNDeviceInfo);
+const deviceInfoEmitter = new NativeEventEmitter(NativeRNDeviceInfo);
 
 let batteryCharging = false,
   batteryLevel = -1,
